@@ -1,3 +1,5 @@
+var lastTileValue   = 8192;
+
 function GameManager(size, InputManager, Actuator, ScoreManager) {
   this.size         = size; // Size of the grid
   this.inputManager = new InputManager;
@@ -140,7 +142,7 @@ GameManager.prototype.move = function (direction) {
           self.score += merged.value;
 
           // The mighty 2048 tile
-          if (merged.value === 2048) self.won = true;
+          if (merged.value === lastTileValue) self.won = true;
         } else {
           self.moveTile(tile, positions.farthest);
         }
